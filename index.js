@@ -1,92 +1,88 @@
+var readlineSync=require("readline-sync");
+var chalk=require('chalk');
 
-var readlineSync = require("readline-sync");
-var userName = readlineSync.question("may have ur name please? ");
-console.log(" welcome  "  + userName );
-score = 0;
-var ans = readlineSync.question("DO YOU KNOW ANIKET? ");
-var ans = "yes";
-if(ans === "yes")
-{
-  console.log(" WELCOME TO THIS QUIZ LET'S START!!!!!");
-}
-else{
-  console.log(" WELCOME TO THE QUIZ LET'S START!!!!!");
-}
-console.log("------------------------");
-function play(question, answer){
-  var userAnswer = readlineSync.question(question);
-  score = 0;
-  if(userAnswer === answer)
-  {
-    console.log("RIGHT!!");
-    score = score + 1;
-    console.log("current score is " +score );
-    console.log("------------------");
-  }else{
-    console.log("WRONG");
-    console.log("current score is " +score );
-    console.log("----------------------------------------------");
+console.clear();
+console.log(chalk.bgMagenta("------HOW WELL DO YOU KNOW ABIUT ME-------"));
+
+var name=readlineSync.question(chalk.yellowBright("\nSo, What's your name: "));
+var score=0;
+var count=0;
+
+console.log(chalk.yellow("\nWelcome to the game,",name,"\nLet's begin with..."));
+console.log(chalk.black.bgGreenBright.bold("\nLEVEL 1"))
+
+
+//function to add questions
+function play(question,options,answer){
+  console.log(chalk.cyanBright(question));
+
+  var userAns=readlineSync.keyInSelect(options,"Select your options to lock: ");
+
+  if(options[userAns]===answer){
+      console.log(chalk.green("\nSahi jawab...."));
+      score+=1;
+    console.log(chalk.black.bgYellowBright.bold("AAPKA SCORE HOTA HAI:"),chalk.yellowBright.bold(score))
+
+      if(score>=4 && score<6){
+        console.log(chalk.black.bgYellowBright.bold("\nWelcome to LEVEL 2..."))
+      }
+      else if(score>=6 && score<8){
+        console.log(chalk.black.bgYellowBright.bold("\nWelcome to LEVEL 3..."))
+      }
+      
+      // else if(score>8 && score<10){
+      //   console.log("\nWelcome to LEVEL 4...")
+      // }
+      else if(score===10){
+        console.log(chalk.black.bgYellowBright.bold("\nYou have won the game...") )       
+      }
   }
-  console.log("you are smart dear" + userName);
+  else{
+    console.log(chalk.red("\nAfsos,Galat jawab"));
+    console.log(chalk.black.bgYellowBright.bold("AAPKA SCORE HOTA HAI:"),chalk.yellowBright.bold(score))
+
+  }
+  count+=1;
+  
+
 }
 
-var questions= [{
-    question: "[1] where do ANIKET live ",
-    answer: "dombivli"
-  },
-  {
-  question: "[2] aniket's faouvrite cricket team? ",
-    answer: " mumbai indians"
-  },
-  {
-  question: "[3] which movies addition aniket like the most? ",
-    answer: "marvels"
-  },
-  {
-  question: "[4] what is ANIKET's nick name? ",
-    answer: "andya"
-  },
-  {
-  question: "[5] How old ANIKET? ",
-    answer: "24"
-  },
-  {
-  question: "[6] what is ANIKET's hobbie? ",
-    answer: "swimming"
-  },
-  {
-  question: "[7] what is anikets faouvrite colour? ",
-    answer: "black"
-  },
-  {
-  question: "[8] aniket's faouvrite song? ",
-    answer: "seniorita"
-  },
-  {
-  question: "[9] aniket's faouvrite sports game? ",
-    answer: "football"
-  },
-  {
-  question: "[10] aniket's faouvrite food? ",
-    answer: "pizza"
-  },
+optionSet1=["Thane","Dombivli","mumbai"];
+optionSet2=["CSK","KKR","mumbai indians"];
+optionSet3=["black","green","Yellow"];
+optionSet4=["23","24","25"];
+optionSet5=["franki","pani puri","pizza"];
+optionSet6=["reading","swimming","chess"];
+optionSet7=["Seniorita","Perfect","Beliver"];
+optionSet8=["snake lader","chess","business"];
+optionSet9=["dark-knight","iron man 3","iron man 2"];
+optionSet10=["BAJAJ","KTM","YAMAHA"];
+
+//question 1
+play("\nWhere do Aniket live?: ",optionSet1,"Dombivli");
+//question 2
+play("\naniket favourite cricket team?: ",optionSet2,"mumbai indians");
+//question 3
+play('\nAnikets favourite color?: "',optionSet3,"black");
+//question 4
+play("\nHow old aniket is?: ",optionSet4,"24");
+//question 5
+play('\nWhich fast food aniket like the most?: ',optionSet5,"pizza");
+//question 6
+play("\nAnikets favourite hobbie?: ",optionSet6,"swimming");
+//question 7
+play("\nAnikets favourite song?: ",optionSet7,"Seniorita");
+//question 8
+play("\nAnikets favourite game?: ",optionSet8,"chess");
+//question 9
+play("\nanikets favourite movie ?: ",optionSet9,"iron man 2");
+//question 10
+play("\nWhich biket brand aniket like?: ",optionSet10,"YAMAHA");
 
 
-];
-
-for(var i=0; i<=questions.length; i++)
-{
-  var currentQuestion = questions[i];
-  play(currentQuestion.question,currentQuestion.answer)
-}
-
-
-
-
-
-
-
-
-
+if(count<10){
+        console.log(chalk.black.bgYellowBright.bold("\nBetter luck next time...") )       
+    
+  }
 
 
