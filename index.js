@@ -2,7 +2,7 @@ var readlineSync=require("readline-sync");
 var chalk=require('chalk');
 
 console.clear();
-console.log(chalk.bgMagenta("------HOW WELL DO YOU KNOW ABIUT ME-------"));
+console.log(chalk.bgGreen("------HOW WELL DO YOU KNOW ABIUT ME-------"));
 
 var name=readlineSync.question(chalk.yellowBright("\nSo, What's your name: "));
 var score=0;
