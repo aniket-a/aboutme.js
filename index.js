@@ -23,19 +23,6 @@ function play(question,options,answer){
       score+=1;
     console.log(chalk.black.bgYellowBright.bold("AAPKA SCORE HOTA HAI:"),chalk.yellowBright.bold(score))
 
-      if(score>=4 && score<6){
-        console.log(chalk.black.bgYellowBright.bold("\nWelcome to LEVEL 2..."))
-      }
-      else if(score>=6 && score<8){
-        console.log(chalk.black.bgYellowBright.bold("\nWelcome to LEVEL 3..."))
-      }
-      
-      // else if(score>8 && score<10){
-      //   console.log("\nWelcome to LEVEL 4...")
-      // }
-      else if(score===10){
-        console.log(chalk.black.bgYellowBright.bold("\nYou have won the game...") )       
-      }
   }
   else{
     console.log(chalk.red("\nAfsos,Galat jawab"));
